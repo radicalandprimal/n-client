@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "nc",
+  "version": "${version}",
+  "name": "N",
+  "description": "",
+  "authors": [
+    "orsond",
+    "rfresh",
+    "odpay",
+    "pepsi boy"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/nc/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "fifthcolumn.n.client.NClient"
+    ],
+    "main": [
+      "fifthcolumn.n.NMod"
+    ],
+    "meteor": [
+      "fifthcolumn.n.modules.NAddOn"
+    ]
+  },
+  "accessWidener": "n.accesswidener",
+  "mixins": [
+    "n.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "\u003e\u003d0.14.21",
+    "fabric": "*",
+    "minecraft": "~1.20"
+  }
+}
