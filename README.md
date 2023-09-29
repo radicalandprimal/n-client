@@ -1,8 +1,10 @@
 # n-client
 
-> found this jar on some discord server and made it compilable
+> :warning: the code contains copenheimer-specific code so make a pr if u want that removed
 
-> credit to <https://github.com/hazelwhitlock> for the intial leak of n client.
+credit to <https://github.com/hazelwhitlock> for the intial leak of n client.
+
+> i found this jar on some discord server and made it compilable
 
 N Client for Meteor Client 1.20.1
 
