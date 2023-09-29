@@ -2,6 +2,8 @@
 
 > found this jar on some discord server and made it compilable
 
+> credit to <https://github.com/hazelwhitlock> for the intial leak of n client.
+
 N Client for Meteor Client 1.20.1
 
 ## Modules
