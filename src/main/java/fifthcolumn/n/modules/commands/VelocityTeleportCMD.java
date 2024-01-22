@@ -16,6 +16,8 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
+
 public class VelocityTeleportCMD extends Command {
     public static final List<Module> CONFLICTING_MODULES = List.of(VelocityTeleportCMD.getModule(AntiHunger.class));
 
@@ -52,7 +54,7 @@ public class VelocityTeleportCMD extends Command {
 
         System.out.println("Traveling " + distance + " blocks, need " + packetsNeeded + " packets.");
 
-        List<Module> modules =  VelocityTeleportCMD.disengageConflictingModules();
+        List<Module> modules =  disengageConflictingModules();
 
         player.networkHandler.sendPacket(new PlayerMoveC2SPacket.LookAndOnGround(yaw, pitch, true));
         player.networkHandler.sendPacket(new ClientCommandC2SPacket(player, ClientCommandC2SPacket.Mode.START_SPRINTING));
@@ -62,9 +64,9 @@ public class VelocityTeleportCMD extends Command {
         }
         player.networkHandler.sendPacket(new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, false));
 
-        VelocityTeleportCMD.reengageModules(modules);
+        reengageModules(modules);
 
-        return 1;
+        return SINGLE_SUCCESS;
     }
 
     public static List<Module> disengageConflictingModules() {
