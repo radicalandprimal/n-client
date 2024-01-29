@@ -47,6 +47,7 @@ public final class CopeService {
     private static final String BASE_URL = "http://cope.fifthcolumnmc.com/";
     private static final Long backgroundRefreshIntervalSeconds = 5L;
     private static final Gson GSON = new Gson();
+
     private final HttpClient clientDelegate = HttpClient.newBuilder().build();
     public final FindServersRequest currentFindRequest = CopeService.defaultFindRequest();
 
@@ -57,11 +58,16 @@ public final class CopeService {
     });
 
     public AtomicBoolean loading = new AtomicBoolean(false);
+    
     public final ScheduledExecutorService backgroundActiveExecutorService = new ScheduledThreadPoolExecutor(1);
+    
     private ServerInfo currentServer;
     private ServerInfo serverInfo;
+    
     private Session defaultSession;
+    
     private ScheduledFuture<?> backgroundActiveRefresh;
+    
     private final ConcurrentHashMap<String, Griefer> griefers = new ConcurrentHashMap<>();
 
     private final LoadingCache<TranslateRequest, CompletableFuture<Optional<TranslateResponse>>> translationCache = CacheBuilder.newBuilder().maximumSize(1000L).expireAfterAccess(1L, TimeUnit.HOURS).build(new CacheLoader<>() {

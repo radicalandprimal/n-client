@@ -23,6 +23,7 @@ public class PlayerListHudMixin {
     @Shadow
     @Final
     private MinecraftClient client;
+
     @Shadow
     @Final
     private static Comparator<PlayerListEntry> ENTRY_ORDERING;

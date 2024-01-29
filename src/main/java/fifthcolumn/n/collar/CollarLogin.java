@@ -14,6 +14,7 @@ import java.util.UUID;
 
 public final class CollarLogin {
     private static final UUID COPE_GROUP_ID = UUID.fromString("fe2b0ae3-8984-414b-8a5f-e972736bb77c");
+
     private static final Logger LOGGER = LoggerFactory.getLogger(CollarLogin.class);
     private static final Gson GSON = new Gson();
     private static final MinecraftClient mc = MinecraftClient.getInstance();
