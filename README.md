@@ -1,9 +1,12 @@
 # n-client
-N Client for Meteor Client 1.20.1
-
-> :warning: This is only a decompilation of the JAR file. It's not usuable unless if you fork it and remove the CollarMC and Copenheimer-specific code. You will also need to remove some specific modules which depend on CollarMC and the Copenheimer API.
+Copenheimer's/The Fifth Column's client for Meteor Client 1.20.6
 
 Credit to <https://github.com/hazelwhitlock> for the intial leak of N Client.
+
+## Installing
+- Install the [Fabric API](https://modrinth.com/mod/fabric-api/version/0.99.0+1.20.6) to your mods folder.
+- Install [Meteor Client](https://meteorclient.com/) to your mods folder.
+- Install [N Client](https://github.com/radicalandprimal/n-client/releases/tag/1.20.6-1) to your mods folder.
 
 ## Modules
 - AntiAim: Goofy rotations, interferes with some placement stuff
