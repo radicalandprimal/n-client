@@ -1,16 +1,10 @@
 package fifthcolumn.n.mixins;
 
-import fifthcolumn.n.NMod;
-import fifthcolumn.n.client.ui.collar.CollarLoginScreen;
-import fifthcolumn.n.client.ui.copenheimer.servers.CopeMultiplayerScreen;
-import fifthcolumn.n.collar.CollarLogin;
-import meteordevelopment.meteorclient.MeteorClient;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.SplashTextRenderer;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -47,28 +41,6 @@ public abstract class TitleScreenMixin extends Screen {
         if (this.splashText == null) {
             this.splashText = new SplashTextRenderer("Grief. Cope. Seethe. Repeat.");
         }
-    }
-
-    @Inject(method = "initWidgetsNormal", at = @At("TAIL"))
-    private void n$addCopenheimerButton(int y, int spacingY, CallbackInfo ci) {
-        this.addDrawableChild(ButtonWidget.builder(Text.of("Copenheimer"), button -> {
-            CopeMultiplayerScreen multiplayerScreen = NMod.getOrCreateMultiplayerScreen(this);
-            ForkJoinPool.commonPool().submit(() -> {
-                Text originalTitle = button.getMessage();
-                button.active = false;
-                button.setMessage(Text.of("Logging in..."));
-                Screen screen = CollarLogin.refreshSession() ? multiplayerScreen : new CollarLoginScreen(multiplayerScreen, this);
-                MeteorClient.mc.execute(() -> {
-                    try {
-                        button.active = true;
-                        button.setMessage(originalTitle);
-                        this.client.setScreen(screen);
-                    } catch (Exception e) {
-                        LOGGER.error("Could not set screen", e);
-                    }
-                });
-            });
-        }).width(200).dimensions(this.width / 2 - 100, y + spacingY * 5, 200, 20).build());
     }
 
     @Redirect(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screen/TitleScreen;PANORAMA_OVERLAY:Lnet/minecraft/util/Identifier;"))

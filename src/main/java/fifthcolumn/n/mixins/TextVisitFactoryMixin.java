@@ -1,6 +1,5 @@
 package fifthcolumn.n.mixins;
 
-import fifthcolumn.n.modules.LarpModule;
 import fifthcolumn.n.modules.StreamerMode;
 import net.minecraft.text.TextVisitFactory;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +16,6 @@ public class TextVisitFactoryMixin {
         argsOnly = true
     )
     private static String n$modifyAllPlayerNameInstances(String text) {
-        text = LarpModule.modifyPlayerNameInstances(text);
         text = StreamerMode.anonymizePlayerNameInstances(text);
         return text;
     }

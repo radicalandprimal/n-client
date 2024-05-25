@@ -1,14 +1,9 @@
 package fifthcolumn.n.utils;
 
-import fifthcolumn.n.copenheimer.CopeService;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Position;
 
 public class BlockPosUtils {
-    public static BlockPos from(CopeService.Position vec) {
-        return BlockPosUtils.from(vec.x, vec.y, vec.z);
-    }
-
     public static BlockPos from(Position vec) {
         return BlockPosUtils.from(vec.getX(), vec.getY(), vec.getZ());
     }

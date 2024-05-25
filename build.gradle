@@ -17,10 +17,6 @@ repositories {
         name = "Meteor Dev Snapshots"
         url = "https://maven.meteordev.org/snapshots"
     }
-    maven {
-        name = "Jitpack"
-        url = "https://jitpack.io"
-    }
 }
 
 dependencies {
@@ -32,15 +28,6 @@ dependencies {
 
     // Meteor
     modImplementation "meteordevelopment:meteor-client:${project.meteor_version}"
-
-    // Collar
-    include implementation("com.github.collarmc.collar:rest:${project.collar_version}")
-    include implementation("com.github.collarmc.collar:api:${project.collar_version}")
-
-    // Jackson
-    include implementation("com.fasterxml.jackson.core:jackson-core:${project.jackson_version}")
-    include implementation("com.fasterxml.jackson.core:jackson-databind:${project.jackson_version}")
-    include implementation("com.fasterxml.jackson.core:jackson-annotations:${project.jackson_version}")
 }
 
 processResources {

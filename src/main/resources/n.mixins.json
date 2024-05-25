@@ -6,13 +6,11 @@
   "mixins": [
     "AbstractClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",
-    "DisconnectedScreenMixin",
     "GameMenuScreenMixin",
     "HotbarStorageMixin",
     "InventoryScreenMixin",
     "LecternScreenMixin",
     "MessageHandlerMixin",
-    "NameTagMixin",
     "TextVisitFactoryMixin",
     "TitleScreenMixin"
   ],
