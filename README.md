@@ -3,12 +3,27 @@ Copenheimer's/The Fifth Column's client for Meteor Client 1.20.6
 
 Credit to <https://github.com/hazelwhitlock> for the intial leak of N Client.
 
+## Showcase
+
+Watch the showcase of N Client featuring the one and only, [Orsond](https://github.com/orsondmc) as the voiceover, he's the lead developer of the Copenheimer project.
+
+<center>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=ulsjZUSky_I" target="_blank"> <img src="http://img.youtube.com/vi/ulsjZUSky_I/mqdefault.jpg" alt="Watch the video" width="500" height="180" border="10" /></a>
+</center>
+
 ## Installing
 - Install the [Fabric API](https://modrinth.com/mod/fabric-api/version/0.99.0+1.20.6) to your mods folder.
 - Install [Meteor Client](https://meteorclient.com/) to your mods folder.
 - Install [N Client](https://github.com/radicalandprimal/n-client/releases/tag/1.20.6-1) to your mods folder.
 
+## TODO
+- Adding back the Copenheimer/CollarMC stuff
+    - Make it use ServerSeeker's API
+
 ## Modules
+
+N Client has tons of features, and it was easy to decompile since there was no obfuscation!
+
 - AntiAim: Goofy rotations, interferes with some placement stuff
 - AutoCutie: Automatically adds all online griefers to meteor friends
 - AutoLava: no clue
@@ -48,7 +63,3 @@ Credit to <https://github.com/hazelwhitlock> for the intial leak of N Client.
 
 ## Building
 Run `gradlew build` and your jar will be in the `build/libs/` folder.
-
----
-
-*ily 5c*
