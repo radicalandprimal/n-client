@@ -48,7 +48,7 @@ public class FastProjectile extends Module {
     public void engage() {
         List<Module> modules = FastProjectile.disengageConflictingModules();
         FastProjectile.mc.player.networkHandler.sendPacket(new ClientCommandC2SPacket(FastProjectile.mc.player, ClientCommandC2SPacket.Mode.START_SPRINTING));
-        for (int i = 0; i < (Integer) FastProjectile.getModule(FastProjectile.class).settings.get("Packet Factor").get(); ++i) {
+        for (int i = 0; i < packetFactor.get(); ++i) {
             FastProjectile.mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.PositionAndOnGround(FastProjectile.mc.player.getX(), FastProjectile.mc.player.getY() - 1.0E-9, FastProjectile.mc.player.getZ(), true));
             FastProjectile.mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.PositionAndOnGround(FastProjectile.mc.player.getX(), FastProjectile.mc.player.getY() + 1.0E-9, FastProjectile.mc.player.getZ(), false));
         }

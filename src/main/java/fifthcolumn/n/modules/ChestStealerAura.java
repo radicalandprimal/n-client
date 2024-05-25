@@ -259,7 +259,7 @@ public class ChestStealerAura extends Module {
         int i = 0;
         while (i < inv.size()) {
             if (this.items.get().contains(inv.getStack(i).getItem())) {
-                InvUtils.quickSwap().slotId(i);
+                InvUtils.shiftClick().slotId(i);
                 this.delay3 = 2;
                 return;
             }
