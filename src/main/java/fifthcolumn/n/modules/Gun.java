@@ -5,6 +5,8 @@ import meteordevelopment.meteorclient.events.entity.player.InteractItemEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -20,8 +22,7 @@ public class Gun extends Module {
     private void onTick(TickEvent.Pre event) {
         ItemStack hand = this.mc.player.getStackInHand(Hand.MAIN_HAND);
         if (hand.getItem() == Items.BOW) {
-            NbtCompound tag = hand.hasNbt() ? hand.getNbt() : new NbtCompound();
-            tag.putInt("CustomModelData", 123);
+            hand.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(123));
         }
     }
 

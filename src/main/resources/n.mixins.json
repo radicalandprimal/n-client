@@ -4,7 +4,6 @@
   "package": "fifthcolumn.n.mixins",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "AbstractClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",
     "GameMenuScreenMixin",
     "HotbarStorageMixin",
@@ -15,12 +14,13 @@
     "TitleScreenMixin"
   ],
   "client": [
-    "ClientPlayerEntityMixin",
+    "ClientConnectionStateMixin",
     "ClientPlayNetworkHandlerMixin",
     "GameOptionsMixin",
     "LogoDrawerMixin",
     "PlayerListEntryMixin",
-    "PlayerListHudMixin"
+    "PlayerListHudMixin",
+    "RotatingCubeMapRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

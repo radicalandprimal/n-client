@@ -1,6 +1,5 @@
 package fifthcolumn.n;
 
-import fifthcolumn.n.client.ProfileCache;
 import meteordevelopment.meteorclient.MeteorClient;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
@@ -29,7 +28,6 @@ public class NMod implements ModInitializer {
     public static SoundEvent shotgunSoundEvent = SoundEvent.of(shotgunSound);
     public static SoundEvent cockSoundEvent = SoundEvent.of(cockSound);
 
-    public static ProfileCache profileCache = new ProfileCache();
     public static GenericNames genericNames = new GenericNames();
 
     @Override

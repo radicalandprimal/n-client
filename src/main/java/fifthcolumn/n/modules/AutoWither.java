@@ -221,7 +221,7 @@ public class AutoWither extends Module {
                 if (dir.toDirection() == this.mc.player.getHorizontalFacing()) {
                     this.sandList.clear();
                     this.headList.clear();
-                    this.hitResult = this.mc.getCameraEntity().raycast(this.mc.interactionManager.getReachDistance(), 0.0f, false);
+                    this.hitResult = this.mc.getCameraEntity().raycast(this.mc.player.getBlockInteractionRange(), 0.0f, false);
 
                     if (!(this.mc.player.getMainHandStack().getItem() instanceof BlockItem)) break;
 

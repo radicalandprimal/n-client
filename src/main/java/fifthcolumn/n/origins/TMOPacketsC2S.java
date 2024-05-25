@@ -1,9 +1,6 @@
 package fifthcolumn.n.origins;
 
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.fabricmc.fabric.api.networking.v1.ServerLoginConnectionEvents;
-import net.fabricmc.fabric.api.networking.v1.ServerLoginNetworking;
+import net.fabricmc.fabric.api.networking.v1.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerLoginNetworkHandler;
 
@@ -13,8 +10,13 @@ public class TMOPacketsC2S {
         ServerLoginNetworking.registerGlobalReceiver(TMOPackets.HANDSHAKE, (server, handler, understood, buf, synchronizer, responseSender) -> {});
     }
 
-    private static void handshake(ServerLoginNetworkHandler serverLoginNetworkHandler, MinecraftServer minecraftServer, PacketSender packetSender, ServerLoginNetworking.LoginSynchronizer loginSynchronizer) {
-        packetSender.sendPacket(TMOPackets.HANDSHAKE, PacketByteBufs.empty());
+    private static void handshake(
+        ServerLoginNetworkHandler serverLoginNetworkHandler,
+        MinecraftServer minecraftServer,
+        LoginPacketSender packetSender,
+        ServerLoginNetworking.LoginSynchronizer loginSynchronizer
+    ) {
+        packetSender.createPacket(TMOPackets.HANDSHAKE, PacketByteBufs.empty());
     }
 }
 

@@ -234,7 +234,7 @@ public class AutoSign extends Module {
         try {
             address = (Inet4Address) Inet4Address.getByName(ip);
         } catch (UnknownHostException e) {
-            return StringUtils.abbreviate(this.mc.player.getEntityName(), 15);
+            return StringUtils.abbreviate(this.mc.player.getName().getString(), 15);
         }
         return String.valueOf(InetAddresses.coerceToInteger(address));
     }

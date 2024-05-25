@@ -18,6 +18,16 @@ public class LogoDrawerMixin {
             target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIFFIIII)V", ordinal = 0
         ))
     public void redirectDrawLogo(DrawContext instance, Identifier texture, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight) {
-        instance.drawTexture(N_LOGO, x, y, u, v, width, 250, textureWidth, textureHeight);
+        instance.drawTexture(N_LOGO, x + 5, y, u, v, width, 44, textureWidth, 44);
+    }
+
+    @Redirect(
+        method = "draw(Lnet/minecraft/client/gui/DrawContext;IFI)V",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIFFIIII)V", ordinal = 1
+        ))
+    public void redirectDrawEditionLogo(DrawContext instance, Identifier texture, int x, int y, float u, float v, int width, int height, int textureWidth, int textureHeight) {
+
     }
 }

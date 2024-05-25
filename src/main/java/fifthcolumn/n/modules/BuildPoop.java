@@ -279,7 +279,7 @@ public class BuildPoop extends Module {
                         if (dir.toDirection() != this.mc.player.getHorizontalFacing()) continue;
 
                         this.stairsList.clear();
-                        this.hitResult = this.mc.getCameraEntity().raycast(this.mc.interactionManager.getReachDistance(), 0.0f, false);
+                        this.hitResult = this.mc.getCameraEntity().raycast(this.mc.player.getBlockInteractionRange(), 0.0f, false);
 
                         if (this.hitResult instanceof BlockHitResult && this.mc.player.getMainHandStack().getItem() instanceof BlockItem) {
                             BlockPos startBlock = ((BlockHitResult) this.hitResult).getBlockPos();

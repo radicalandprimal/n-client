@@ -6,6 +6,7 @@ import net.minecraft.client.option.HotbarStorageEntry;
 import net.minecraft.datafixer.DataFixTypes;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtIo;
+import net.minecraft.nbt.NbtOps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Final;
@@ -17,6 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.DataInputStream;
 import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Mixin(HotbarStorage.class)
 public abstract class HotbarStorageMixin {
@@ -33,13 +37,14 @@ public abstract class HotbarStorageMixin {
         Logger LOGGER = LoggerFactory.getLogger(HotbarStorageMixin.class);
 
         try {
-            InputStream in = HotbarStorageMixin.class.getClassLoader().getResourceAsStream(HOTBAR_HOTBAR_NBT);
-            if (in == null) {
+            URL hotbarResource = HotbarStorageMixin.class.getClassLoader().getResource(HOTBAR_HOTBAR_NBT);
+            if (hotbarResource == null) {
                 LOGGER.error("Could not find hotbar hotbar/hotbar.nbt");
                 return;
             }
 
-            NbtCompound nbtComp = NbtIo.read(new DataInputStream(in));
+            Path hotbarResourcePath = Paths.get(hotbarResource.toURI());
+            NbtCompound nbtComp = NbtIo.read(hotbarResourcePath);
             if (nbtComp != null) {
                 if (!nbtComp.contains("DataVersion", 99)) {
                     nbtComp.putInt("DataVersion", 1343);
@@ -48,7 +53,8 @@ public abstract class HotbarStorageMixin {
                 nbtComp = DataFixTypes.HOTBAR.update(this.dataFixer, nbtComp, nbtComp.getInt("DataVersion"));
 
                 for (int i = 0; i < 9; i++) {
-                    this.entries[i].readNbtList(nbtComp.getList(String.valueOf(i), 10));
+                    this.entries[i] = HotbarStorageEntry.CODEC.parse(NbtOps.INSTANCE, nbtComp.getList(String.valueOf(i), 10))
+                        .result().orElseGet(HotbarStorageEntry::new);
                 }
             }
         } catch (Exception e) {

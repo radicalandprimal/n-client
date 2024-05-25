@@ -30,8 +30,8 @@
     "n.mixins.json"
   ],
   "depends": {
-    "fabricloader": "\u003e\u003d0.14.21",
+    "fabricloader": "\u003e\u003d0.15.0",
     "fabric": "*",
-    "minecraft": "~1.20"
+    "minecraft": "1.20.6"
   }
 }

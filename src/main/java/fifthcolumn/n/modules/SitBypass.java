@@ -14,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.data.DataTracker;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.Registries;
@@ -66,7 +67,7 @@ public class SitBypass extends Module {
         }
 
         @Override
-        protected void initDataTracker() {}
+        protected void initDataTracker(DataTracker.Builder builder) {}
 
         @Override
         protected void readCustomDataFromNbt(NbtCompound nbt) {}

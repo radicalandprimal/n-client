@@ -4,8 +4,9 @@ import fifthcolumn.n.events.PlayerSpawnPositionEvent;
 import fifthcolumn.n.events.SpawnPlayerEvent;
 import meteordevelopment.meteorclient.MeteorClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.entity.EntityType;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlayerSpawnPositionS2CPacket;
-import net.minecraft.network.packet.s2c.play.PlayerSpawnS2CPacket;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,8 +20,12 @@ public class ClientPlayNetworkHandlerMixin {
         MeteorClient.EVENT_BUS.post(new PlayerSpawnPositionEvent(packet.getPos()));
     }
 
-    @Inject(method = "onPlayerSpawn", at = @At("TAIL"))
-    private void n$playerSpawnEvent(PlayerSpawnS2CPacket packet, CallbackInfo ci) {
-        MeteorClient.EVENT_BUS.post(new SpawnPlayerEvent(packet.getPlayerUuid(), new BlockPos((int) packet.getX(), (int) packet.getY(), (int) packet.getZ())));
+    @Inject(method = "onEntitySpawn", at = @At("TAIL"))
+    private void n$playerSpawnEvent(EntitySpawnS2CPacket packet, CallbackInfo ci) {
+        if (packet.getEntityType() != EntityType.PLAYER) return;
+        MeteorClient.EVENT_BUS.post(new SpawnPlayerEvent(
+            packet.getUuid(),
+            new BlockPos((int) packet.getX(), (int) packet.getY(), (int) packet.getZ())
+        ));
     }
 }
