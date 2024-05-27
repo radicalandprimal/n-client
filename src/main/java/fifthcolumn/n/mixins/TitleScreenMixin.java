@@ -1,5 +1,7 @@
 package fifthcolumn.n.mixins;
 
+import fifthcolumn.n.modules.FifthColumnTitleScreen;
+import meteordevelopment.meteorclient.systems.modules.Modules;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
@@ -32,7 +34,10 @@ public abstract class TitleScreenMixin extends Screen {
     @Inject(method = "init", at = @At("HEAD"))
     private void n$modifySplashText(CallbackInfo ci) {
         if (this.splashText == null) {
-            this.splashText = new SplashTextRenderer("Grief. Cope. Seethe. Repeat.");
+            FifthColumnTitleScreen fifthColumnTitleScreen = Modules.get().get(FifthColumnTitleScreen.class);
+            if (fifthColumnTitleScreen.isActive()) {
+                this.splashText = new SplashTextRenderer("Grief. Cope. Seethe. Repeat.");
+            }
         }
     }
 }

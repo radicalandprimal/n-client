@@ -36,6 +36,7 @@ public class NAddOn extends MeteorAddon {
         modules.add(new OriginsModule());
         modules.add(new SitBypass());
         modules.add(new GameModeNotifier());
+        modules.add(new FifthColumnTitleScreen());
 
         Commands.add(new CopyIPCMD());
         Commands.add(new VanityTagCMD());

@@ -1,8 +1,12 @@
 package fifthcolumn.n.mixins;
 
+import fifthcolumn.n.modules.FifthColumnTitleScreen;
+import meteordevelopment.meteorclient.systems.modules.Modules;
 import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.util.Identifier;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -11,6 +15,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Mixin(RotatingCubeMapRenderer.class)
 public abstract class RotatingCubeMapRendererMixin {
+    @Shadow
+    @Final
+    public static Identifier OVERLAY_TEXTURE;
+
     @Unique
     private final Identifier backgroundId = new Identifier(
         "nc:" + ThreadLocalRandom.current().nextInt(1, 26) + ".png");
@@ -23,6 +31,10 @@ public abstract class RotatingCubeMapRendererMixin {
         )
     )
     private Identifier n$modifyPanoramaOverlay() {
-        return this.backgroundId;
+        FifthColumnTitleScreen fifthColumnTitleScreen = Modules.get().get(FifthColumnTitleScreen.class);
+        if (fifthColumnTitleScreen.isActive()) {
+            return this.backgroundId;
+        }
+        return OVERLAY_TEXTURE;
     }
 }
