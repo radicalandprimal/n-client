@@ -7,7 +7,6 @@ public class TMOPackets {
     public static final Identifier HANDSHAKE = TMOPackets.identifier("handshake");
 
     public static Identifier identifier(String path) {
-        return new Identifier(MODID, path);
+        return Identifier.of(MODID, path);
     }
 }
-

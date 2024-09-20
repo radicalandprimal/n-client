@@ -20,7 +20,7 @@ public abstract class RotatingCubeMapRendererMixin {
     public static Identifier OVERLAY_TEXTURE;
 
     @Unique
-    private final Identifier backgroundId = new Identifier(
+    private final Identifier backgroundId = Identifier.of(
         "nc:" + ThreadLocalRandom.current().nextInt(1, 26) + ".png");
 
     @Redirect(

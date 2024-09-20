@@ -25,11 +25,11 @@ import net.minecraft.world.World;
 import java.util.concurrent.CompletableFuture;
 
 public class SitBypass extends Module {
-    public static final Identifier VERSION_CHECK = new Identifier("sit", "version_check");
+    public static final Identifier VERSION_CHECK = Identifier.of("sit", "version_check");
 
     public static final EntityType<EntityImpl> SIT_ENTITY_TYPE = Registry.register(
         Registries.ENTITY_TYPE,
-        new Identifier("sit", "entity_sit"),
+        Identifier.of("sit", "entity_sit"),
         FabricEntityTypeBuilder.create(SpawnGroup.MISC, EntityImpl::new).dimensions(EntityDimensions.fixed(0.001f, 0.001f)).build()
     );
 

@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(LogoDrawer.class)
 public class LogoDrawerMixin {
     @Unique
-    private static final Identifier N_LOGO = new Identifier("nc:title.png");
+    private static final Identifier N_LOGO = Identifier.of("nc:title.png");
 
     @Redirect(
         method = "draw(Lnet/minecraft/client/gui/DrawContext;IFI)V",

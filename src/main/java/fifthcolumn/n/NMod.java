@@ -21,9 +21,9 @@ public class NMod implements ModInitializer {
 
     private static NMod INSTANCE;
 
-    public static final Identifier CAPE_TEXTURE = new Identifier("nc:cape.png");
-    public static final Identifier cockSound = new Identifier("nc:cock");
-    public static final Identifier shotgunSound = new Identifier("nc:shot");
+    public static final Identifier CAPE_TEXTURE = Identifier.of("nc:cape.png");
+    public static final Identifier cockSound = Identifier.of("nc:cock");
+    public static final Identifier shotgunSound = Identifier.of("nc:shot");
 
     public static SoundEvent shotgunSoundEvent = SoundEvent.of(shotgunSound);
     public static SoundEvent cockSoundEvent = SoundEvent.of(cockSound);
